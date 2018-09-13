@@ -15,10 +15,15 @@ As big servos were expensive I thought I could build one from an Arduino, Potent
 * 2x 220R resistor
 * Wire
 * Connectors
+* Motor with gearbox
 
-Along with the electronics is a metal plate to hold the motor and potentiometer and a wooden case styled in the design of a servo.
+Along with the electronics is a metal plate to hold the motor and potentiometer and a wooden case styled in the design of a servo. I used a [MFA/COMODRILLS 919D motor gearbox](https://www.mfacomodrills.com/gearboxes/919d_series.html).
 
 ![Servo Case](ServoCase.jpg "Servo Case")
+
+## Electronics
+
+Todo
 
 ## Code
 
