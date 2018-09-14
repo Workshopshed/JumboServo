@@ -13,6 +13,7 @@ As big servos were expensive I thought I could build one from an Arduino, Potent
 * L298 H-Bridge module
 * 10K Linear Potentiometer
 * 2x 220R resistor
+* 0.1uF Capacitor
 * Wire
 * Connectors
 * Motor with gearbox
@@ -28,6 +29,10 @@ The schematic for the project is provided in KiCad format.
 ![Schematic](Schematic/ServoDiagram.png "Servo Diagram")
 
 The key points are that the enable wire for the H-Brige module should be one of the PWM enabled pins on your Arduino. The two control pins should be determined so that when the motor is running forward the values from the analogue input increment and vice versa. It's recommended that you test this with the gear for the potentiometer disconnected.
+
+A 0.1uF capacitor is wired across the contacts of the motor to help surpress noise from the motor.
+
+The i2C cable will need some pullup resistors. The value of these will depend on the length of the cable. The longer the cable the lower values are recommended. At 0.5 I used a 220R resistor. Cables over 1m may not work at all.
 
 ## Code
 
