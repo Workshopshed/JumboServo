@@ -23,10 +23,20 @@ Along with the electronics is a metal plate to hold the motor and potentiometer 
 
 ## Electronics
 
-Todo
+The schematic for the project is provided in KiCad format.
+
+![Schematic](Schematic\ServoDiagram.png "Servo Diagram")
+
+The key points are that the enable wire for the H-Brige module should be one of the PWM enabled pins on your Arduino. The two control pins should be determined so that when the motor is running forward the values from the analogue input increment and vice versa. It's recommended that you test this with the gear for the potentiometer disconnected.
 
 ## Code
 
 There's two lots of code here. The "Servo" folder is the code that runs on the servo and the "Controller" folder is demo project for a test rig with uses an LCD and some buttons to control the servo.
 
-![Test Rig](TestRig.jpg "Squirting water game")
+![Test Rig](TestRig.jpg "Test Rig")
+
+## 3D Models
+
+There are two models provide the gear to fit the potentiometer and the spindle for the output shaft. These were built using OpenSCAD. Note that you may need to adjust the internal size of the gear and spindle to get a good fit on your pot/motor output shaft.
+
+![Servo Gear](3DModels/ServoGear.png) ![Servo Spindle](3DModels/ServoSpindle.png)
