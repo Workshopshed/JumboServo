@@ -28,7 +28,7 @@ The schematic for the project is provided in KiCad format.
 
 ![Schematic](Schematic/ServoDiagram.png "Servo Diagram")
 
-The key points are that the enable wire for the H-Brige module should be one of the PWM enabled pins on your Arduino. The two control pins should be determined so that when the motor is running forward the values from the analogue input increment and vice versa. It's recommended that you test this with the gear for the potentiometer disconnected.
+The key points are that the enable wire for the H-Bridge module should be one of the PWM enabled pins on your Arduino. The two control pins should be determined so that when the motor is running forward the values from the analogue input increment and vice versa. It's recommended that you test this with the gear for the potentiometer disconnected.
 
 A 0.1uF capacitor is wired across the contacts of the motor to help surpress noise from the motor.
 
@@ -39,6 +39,29 @@ The i2C cable will need some pullup resistors. The value of these will depend on
 There's two lots of code here. The "Servo" folder is the code that runs on the servo and the "Controller" folder is demo project for a test rig with uses an LCD and some buttons to control the servo.
 
 ![Test Rig](TestRig.jpg "Test Rig")
+
+## Protocol
+
+The servo takes 3 commands from the controller.
+
+|Command|Value|Bytes|
+|---|---|---|
+|Stop |1|1|
+|Angle|2|3|
+|Speed|3|3|
+
+For the angle and speed commands the command value is followed by the value as an integer with the low byte first. Angle is a value from 0-1023, the controller needs to compensate for this and turn the value into degrees. Note that for the current version speed is just from 0-255. Low values of speed should be avoided typically the motor won't turn.
+
+One of the reasons for having a digital protocol is to be able to read the status back from the servo. This is done by requesting a read from the registers.
+
+|Register|Value|Description|
+|---|---|---|
+|Target|0|Where the motor is aiming to get to?|
+|Running|1|Is the motor currently running?|
+|Position|2|Current output shaft position|
+|Speed|3|Speed|
+|Direction|4|Current direction of movement|
+
 
 ## 3D Models
 
