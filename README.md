@@ -25,7 +25,7 @@ Along with the electronics is a metal plate to hold the motor and potentiometer 
 
 The schematic for the project is provided in KiCad format.
 
-![Schematic](Schematic\ServoDiagram.png "Servo Diagram")
+![Schematic](Schematic/ServoDiagram.png "Servo Diagram")
 
 The key points are that the enable wire for the H-Brige module should be one of the PWM enabled pins on your Arduino. The two control pins should be determined so that when the motor is running forward the values from the analogue input increment and vice versa. It's recommended that you test this with the gear for the potentiometer disconnected.
 
