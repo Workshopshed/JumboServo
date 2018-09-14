@@ -44,13 +44,13 @@ There's two lots of code here. The "Servo" folder is the code that runs on the s
 
 The servo takes 3 commands from the controller.
 
-|Command|Value|Bytes|
+|Command|Value|Data Bytes|
 |---|---|---|
-|Stop |1|1|
-|Angle|2|3|
-|Speed|3|3|
+|Stop |1|0|
+|Angle|2|2|
+|Speed|3|2|
 
-For the angle and speed commands the command value is followed by the value as an integer with the low byte first. Angle is a value from 0-1023, the controller needs to compensate for this and turn the value into degrees. Note that for the current version speed is just from 0-255. Low values of speed should be avoided typically the motor won't turn.
+For the angle and speed commands the command value is followed by the value as an integer with the low byte first. Angle is a value from 0-1023, the controller needs to compensate for this and turn the value into degrees. Note that for the current version speed is just from 0-255 so a 0 should be sent as the high byte. Low values of speed should be avoided typically the motor won't turn.
 
 One of the reasons for having a digital protocol is to be able to read the status back from the servo. This is done by requesting a read from the registers.
 
